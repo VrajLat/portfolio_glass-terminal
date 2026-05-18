@@ -126,7 +126,7 @@ function Hero({ tweaks }) {
             <a className="btn btn-fill" href="#work">
               <span>See selected work</span><span className="arr">→</span>
             </a>
-            <a className="btn btn-glass" href="#about">
+            <a className="btn btn-glass" href="uploads/Vraj_Lathiya_CV.pdf" download="Vraj_Lathiya_CV.pdf">
               <span>Download CV</span>
             </a>
           </div>
@@ -499,19 +499,19 @@ function About() {
           </p>
         </div>
         <div className="contact-grid">
-          <a href="mailto:vraj@example.com">
+          <a href="mailto:vrajlathiya04@gmail.com">
             <span className="k">Email</span>
-            <span className="v">vraj.lathiya@mail.com →</span>
+            <span className="v">vrajlathiya04 →</span>
           </a>
-          <a href="#">
+          <a href="https://github.com/VrajLat" target="_blank" rel="noopener noreferrer">
             <span className="k">GitHub</span>
-            <span className="v">@vraj-lathiya →</span>
+            <span className="v">VrajLat →</span>
           </a>
-          <a href="#">
+          <a href="https://www.linkedin.com/in/vraj-lathiya-975209225/" target="_blank" rel="noopener noreferrer">
             <span className="k">LinkedIn</span>
             <span className="v">in/vraj-lathiya →</span>
           </a>
-          <a href="#">
+          <a href="uploads/Vraj_Lathiya_CV.pdf" download="Vraj_Lathiya_CV.pdf">
             <span className="k">CV</span>
             <span className="v">Resume · PDF →</span>
           </a>
