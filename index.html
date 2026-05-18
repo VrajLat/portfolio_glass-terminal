@@ -1751,6 +1751,10 @@
         inset: -8px;
       }
 
+      .waterline-wrap .water-text {
+        will-change: auto;
+      }
+
       .work-card {
         grid-column: span 12 !important;
       }
@@ -1836,6 +1840,18 @@
       "cursor": true,
       "accent": "amber"
     }/*EDITMODE-END*/;
+  </script>
+
+  <script>
+    // Pause the SVG feTurbulence animation on touch/mobile — the static
+    // displacement remains, but per-frame noise recalculation stops.
+    if (window.matchMedia('(hover: none)').matches ||
+        window.matchMedia('(max-width: 900px)').matches) {
+      document.addEventListener('DOMContentLoaded', function () {
+        var s = document.querySelector('svg[aria-hidden]');
+        if (s && s.pauseAnimations) s.pauseAnimations();
+      });
+    }
   </script>
 
   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"

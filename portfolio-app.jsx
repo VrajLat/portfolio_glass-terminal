@@ -12,8 +12,9 @@ const MOTION_SCALE = { off: 0.0001, calm: 1, lively: 2 };
 function CursorLens({ enabled }) {
   const ref = useRef(null);
   const [shrunk, setShrunk] = useState(false);
+  const isTouch = !window.matchMedia('(hover: hover)').matches;
   useEffect(() => {
-    if (!enabled) return;
+    if (!enabled || isTouch) return;
     let x = window.innerWidth / 2, y = window.innerHeight / 2;
     let tx = x, ty = y;
     const onMove = (e) => { tx = e.clientX; ty = e.clientY; };
@@ -28,16 +29,16 @@ function CursorLens({ enabled }) {
       if (ref.current) ref.current.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
       raf = requestAnimationFrame(tick);
     };
-    window.addEventListener('mousemove', onMove);
-    window.addEventListener('mouseover', onOver);
+    window.addEventListener('mousemove', onMove, { passive: true });
+    window.addEventListener('mouseover', onOver, { passive: true });
     raf = requestAnimationFrame(tick);
     return () => {
       window.removeEventListener('mousemove', onMove);
       window.removeEventListener('mouseover', onOver);
       cancelAnimationFrame(raf);
     };
-  }, [enabled]);
-  if (!enabled) return null;
+  }, [enabled, isTouch]);
+  if (!enabled || isTouch) return null;
   return <div ref={ref} className={`cursor-lens ${shrunk ? 'shrink' : ''}`} />;
 }
 

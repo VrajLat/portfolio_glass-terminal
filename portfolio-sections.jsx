@@ -230,8 +230,9 @@ function PoemPreview() {
 }
 
 function LatencyChart() {
-  // animated SVG that gently morphs
+  // animated SVG that gently morphs — RAF only runs when in viewport
   const [t, setT] = useState(0);
+  const containerRef = useRef(null);
   useEffect(() => {
     let raf, start;
     const tick = (ts) => {
@@ -239,8 +240,16 @@ function LatencyChart() {
       setT((ts - start) / 1000);
       raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        start = null;
+        raf = requestAnimationFrame(tick);
+      } else {
+        cancelAnimationFrame(raf);
+      }
+    }, { threshold: 0.1 });
+    if (containerRef.current) io.observe(containerRef.current);
+    return () => { cancelAnimationFrame(raf); io.disconnect(); };
   }, []);
   const pts = [];
   for (let i = 0; i < 60; i++) {
@@ -250,7 +259,7 @@ function LatencyChart() {
   }
   const path = `M${pts.join(' L')}`;
   return (
-    <div className="stream-viz">
+    <div ref={containerRef} className="stream-viz">
       <div className="label-row">
         <span>TTFB · ms</span>
         <span>now · 132ms</span>
