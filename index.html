@@ -1711,15 +1711,29 @@
 
     /* Responsive */
     @media (max-width: 900px) {
+      body {
+        overflow-x: hidden;
+      }
+
       .hero {
         grid-template-columns: 1fr;
         gap: 40px;
         padding-bottom: 40px;
-        overflow: hidden;
       }
 
       .hero .display {
         font-size: clamp(36px, 11vw, 56px);
+      }
+
+      /* Terminal mono font is wider — shrink heading and allow the
+         < waterline. /> bracket wrapper to reflow rather than overflow. */
+      [data-preset="terminal"] .hero .display {
+        font-size: clamp(24px, 7vw, 34px);
+      }
+
+      [data-preset="terminal"] .hero .em {
+        white-space: normal;
+        display: inline;
       }
 
       .stats {
