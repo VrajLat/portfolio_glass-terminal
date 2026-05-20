@@ -126,7 +126,7 @@ function Hero({ tweaks }) {
             <a className="btn btn-fill" href="#work">
               <span>See selected work</span><span className="arr">→</span>
             </a>
-            <a className="btn btn-glass" href="uploads/Vraj_Lathiya_CV.pdf" download="Vraj_Lathiya_CV.pdf">
+            <a className="btn btn-glass" href="https://drive.google.com/uc?export=download&id=1qEWHdtXj4uiG4JD7pAW3m1abArqWy9qB" target="_blank" rel="noopener noreferrer">
               <span>Download CV</span>
             </a>
           </div>
@@ -520,7 +520,7 @@ function About() {
             <span className="k">LinkedIn</span>
             <span className="v">in/vraj-lathiya →</span>
           </a>
-          <a href="uploads/Vraj_Lathiya_CV.pdf" download="Vraj_Lathiya_CV.pdf">
+          <a href="https://drive.google.com/uc?export=download&id=1qEWHdtXj4uiG4JD7pAW3m1abArqWy9qB" target="_blank" rel="noopener noreferrer">
             <span className="k">CV</span>
             <span className="v">Resume · PDF →</span>
           </a>
